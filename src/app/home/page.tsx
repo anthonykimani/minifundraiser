@@ -4,6 +4,7 @@ import Search from "@/shared/Search";
 import Featured from "@/shared/Featured";
 import Categories from "./components/Categories";
 import VerifiedCampaigns from "@/shared/VerifiedCampaigns";
+import NavBar from "@/shared/NavBar";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Featured />
       <Categories />
       <VerifiedCampaigns />
+      <NavBar />
     </div>
   );
 };
