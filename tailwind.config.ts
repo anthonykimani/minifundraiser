@@ -8,7 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      
+      backgroundImage: {
+        'featured': "url('/img/medium-shot-women-posing-together.jpg')",
+      }
     },
   },
   plugins: [],
