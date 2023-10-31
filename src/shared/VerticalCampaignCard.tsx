@@ -8,7 +8,7 @@ const VerticalCampaignCard = ({ img, text, location }: CardType) => {
     <div className="rounded-xl min-w-[180px] overflow-hidden border border-gray-200 mx-1">
       <Image src={img} alt="" className=" bg-cover" />
       <div className="p-1">
-        <h3 className="text-sm my-1">{text}</h3>
+        <h3 className="text-sm my-1 font-semibold">{text}</h3>
         <div className="flex justify-around items-center my-2">
           <Image src={svg.location} alt="" />
           <h4 className="text-sm">{location}</h4>

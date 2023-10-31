@@ -7,6 +7,9 @@ const config: Config = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily:{
+      'DMsans':['DM Sans', 'sans-serif'],
+    },
     extend: {
       backgroundImage: {
         'featured': "url('/img/medium-shot-women-posing-together.jpg')",
