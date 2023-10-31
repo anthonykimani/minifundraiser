@@ -1,10 +1,5 @@
 import { svg } from "@/constants";
 
-export type CategoryType = {
-  icon: string;
-  text: string;
-};
-
 export const categories = [
   {
     icon: svg.location,

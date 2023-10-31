@@ -1,4 +1,4 @@
-import { CategoryType } from "@/helpers/categories";
+import { CategoryType } from "@/types/componentTypes";
 import Image from "next/image";
 import React from "react";
 

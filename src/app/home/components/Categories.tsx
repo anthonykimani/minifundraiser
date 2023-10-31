@@ -1,5 +1,7 @@
 import { categories } from "@/helpers/categories";
+import { categoryData } from "@/helpers/categoryData";
 import Category from "@/shared/Category";
+import VerticalCampaignCard from "@/shared/VerticalCampaignCard";
 import React from "react";
 
 const Categories = () => {
@@ -15,6 +17,15 @@ const Categories = () => {
             <Category key={index} icon={category.icon} text={category.text} />
           );
         })}
+      </div>
+      <div className="mt-[20px] flex min-w-[300px] overflow-x-scroll">
+        {
+          categoryData.map((data, index)=>{
+            return (
+              <VerticalCampaignCard key={index} img={data.img} text={data.text} location={data.location} />
+            )
+          })
+        }
       </div>
     </div>
   );
