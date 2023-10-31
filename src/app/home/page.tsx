@@ -1,8 +1,11 @@
 import React from 'react'
+import AppBar from './components/AppBar'
 
 const Home = () => {
   return (
-    <div>Hello MiniFundraiser</div>
+    <div>
+        <AppBar />
+    </div>
   )
 }
 
