@@ -9,7 +9,7 @@ const NavBar = () => {
           <i className="bx bxs-home bx-sm"></i>
           <h3 className="text-sm">Home</h3>
         </Link>
-        <Link href="/" className="flex flex-col items-center">
+        <Link href="/campaign" className="flex flex-col items-center">
           <i className="bx bx-clipboard bx-sm"></i>
           <h3 className="text-sm">Campaigns</h3>
         </Link>
