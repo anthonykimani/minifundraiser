@@ -1,4 +1,12 @@
 import { img } from "@/constants";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/shared/ui/dialog";
 import { Progress } from "@/shared/ui/progress";
 import Image from "next/image";
 import React from "react";
@@ -59,9 +67,25 @@ const CampaignBody = () => {
           </div>
         </div>
         <div className="flex flex-col items-center my-3">
-          <button className="bg-[#FFBC6B] text-white rounded-md p-3 w-[98%]">
-            Donate
-          </button>
+          <Dialog>
+            <DialogTrigger className="w-[98%]">
+              <button className="bg-[#FFBC6B] text-white rounded-md p-3 w-full">
+                Donate
+              </button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Enter Amount to Donate</DialogTitle>
+                <DialogDescription>
+                  
+                </DialogDescription>
+                <form>
+                    <input type="number" placeholder="Enter Amount to Donate..." className="border border-gray-300 rounded-md p-3 w-full my-2"/>
+                    <input type="submit" value="Confirm Donation" className="bg-[#E96D23] text-white rounded-md p-3 w-full" />
+                </form>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
           <button className="text-[#FFBC6B] border border-[#FFBC6B] rounded-md p-3 w-[98%] mt-3">
             Share
           </button>
