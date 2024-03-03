@@ -3,13 +3,13 @@ require("dotenv").config();
 const hre = require("hardhat");
 
 async function main() {
-  const Fundraiser = await hre.ethers.getContractFactory("Fundraiser");
+  const Fundraiser = await hre.ethers.deployContract("Fundraiser");
 
-  const fundraiser = await Fundraiser.deploy();
+  await Fundraiser.waitForDeployment();
+  
 
-  console.log(`Deployed to Address: ${fundraiser.address}`);
+  console.log(`Deployed to Address: ${Fundraiser.target}`);
 
-  await fundraiser.waitForDeployment();
 }
 
 // We recommend this pattern to be able to use async/await everywhere
