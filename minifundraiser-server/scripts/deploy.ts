@@ -1,22 +1,15 @@
 import { ethers } from "hardhat";
+require("dotenv").config();
+const hre = require("hardhat");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  const Fundraiser = await hre.ethers.getContractFactory("Fundraiser");
 
-  const lockedAmount = ethers.parseEther("0.001");
+  const fundraiser = await Fundraiser.deploy();
 
-  const lock = await ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
+  console.log(`Deployed to Address: ${fundraiser.address}`);
 
-  await lock.waitForDeployment();
-
-  console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
-  );
+  await fundraiser.waitForDeployment();
 }
 
 // We recommend this pattern to be able to use async/await everywhere
