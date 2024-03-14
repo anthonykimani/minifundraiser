@@ -9,12 +9,12 @@ import CreateCampaign from "@/shared/CreateCampaign";
 const { ethers } = require("ethers");
 
 const Home = () => {
-  // Ensure MiniPay provider is available
-  if (window.ethereum && window.ethereum.isMiniPay) {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-  } else {
-    console.error("MiniPay provider not detected");
-  }
+  // // Ensure MiniPay provider is available
+  // if (window.ethereum && window.ethereum.isMiniPay) {
+  //   const provider = new ethers.providers.Web3Provider(window.ethereum);
+  // } else {
+  //   console.error("MiniPay provider not detected");
+  // }
 
   return (
     <div className="overflow-auto font-DMsans">
