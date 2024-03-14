@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import '@rainbow-me/rainbowkit/styles.css';
 import "./globals.css";
+import Web3ModalProvider from '@/context'
+import { cookieToInitialState } from "wagmi";
+import { config } from "@/config";
+import { headers } from 'next/headers'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,6 +19,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const initialState = cookieToInitialState(config, headers().get('cookie'))
   return (
     <html lang="en">
       <head>
@@ -22,7 +28,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <Web3ModalProvider initialState={initialState}>{children}</Web3ModalProvider>
+      </body>
     </html>
   );
 }

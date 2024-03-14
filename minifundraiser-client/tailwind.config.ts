@@ -21,7 +21,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'featured': "url('/img/medium-shot-women-posing-together.jpg')",
-        'campaign': "url('/img/close-up-african-girls-together.jpg')"
+        'campaign': "url('/img/close-up-african-girls-together.jpg')",
+        'createCampaign': "url('/svg/button.svg')",
       },
       keyframes: {
         "accordion-down": {
