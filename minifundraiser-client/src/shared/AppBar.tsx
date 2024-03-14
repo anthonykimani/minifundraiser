@@ -42,7 +42,7 @@ const AppBar = () => {
               ? "Connect Wallet"
               : isConnecting
               ? "Connecting"
-              : `Connected to ${truncateEthAddress(address)}`}
+              : `Connected to ${truncateEthAddress(address??"")}`}
           </button>
         </ul>
       </div>
@@ -59,7 +59,7 @@ const AppBar = () => {
           ? "Connect Wallet"
           : isConnecting
           ? "Connecting"
-          : `Connected to ${truncateEthAddress(address)}`}
+          : `Connected to ${truncateEthAddress(address??"")}`}
       </button>
     </div>
   );
