@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import {
@@ -70,7 +70,7 @@ const CreateCampaign = () => {
       <div className="flex justify-start my-2 items-center">
         <h3 className="font-semibold">Create a Campaigns</h3>
       </div>
-      <article className="bg-createCampaign h-[100px] rounded-xl flex justify-end items-end">
+      <article className="bg-createCampaign bg-no-repeat bg-cover h-[100px] rounded-xl flex justify-end items-end">
         <button
           onClick={() => setOpenCampaignModal(true)}
           className="py-3 px-6 m-2 border text-[#E99123] rounded-full bg-white  hover:cursor-pointer hover:font-semibold"

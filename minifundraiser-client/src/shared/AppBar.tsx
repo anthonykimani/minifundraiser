@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { BigNumber } from "bignumber.js";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
