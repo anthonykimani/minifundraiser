@@ -1,37 +1,48 @@
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.9;
-
-// Uncomment this line to use console.log
-// import "hardhat/console.sol";
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
 
 contract Fundraiser {
     struct Campaign {
-        address payable creator;
-        uint targetAmount;
-        uint deadline;
-        uint numFunders;
-        uint amountRaised;
+        bytes32 campaignName;
+        uint256 targetAmount;
+        address payable campaignAddress;
+        uint256 campaignDeadline;
+        uint256 amountRaised;
+        uint256 numFunders;
     }
 
     Campaign[] public campaigns;
 
-    struct Contributor {
-        address payable addr;
-        uint amount;
-    }
-
-    function createCampaign(uint _targetAmount, uint _deadline) public {
-        Campaign memory newCampaign = Campaign(payable(msg.sender), _targetAmount, _deadline, 0, 0);
-        campaigns.push(newCampaign);
+    function createCampaign(
+        bytes32 _campaignName,
+        uint256 _targetAmount,
+        address _campaignAddress,
+        uint256 _campaignDeadline
+    ) public {
+        campaigns.push(
+            Campaign({
+                campaignName: _campaignName,
+                targetAmount: _targetAmount,
+                campaignAddress: payable(_campaignAddress),
+                campaignDeadline: _campaignDeadline,
+                amountRaised: 0,
+                numFunders: 0
+            })
+        );
     }
 
     function fundCampaign(uint campaignId) public payable {
         Campaign storage campaign = campaigns[campaignId];
-        require(block.timestamp < campaign.deadline, "Campaign Funding Period has Ended");
-        require(msg.value <= campaign.targetAmount - campaign.amountRaised, "Campaign Has reached its funding Goal");
+        require(
+            block.timestamp < campaign.campaignDeadline,
+            "Campaign Funding Period has Ended"
+        );
+        require(
+            msg.value <= campaign.targetAmount - campaign.amountRaised,
+            "Campaign Has reached its funding Goal"
+        );
 
         campaign.amountRaised += msg.value;
         campaign.numFunders++;
     }
-
 }

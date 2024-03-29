@@ -1,13 +1,19 @@
 {
-  "name": "hardhat-project",
+  "name": "minifundraiser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anthony Kimani",
+  "license": "ISC",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
-    "hardhat": "^2.19.2"
+    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
+    "hardhat": "^2.22.2"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "ethers": "^6.11.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "@openzeppelin/contracts": "^5.0.2",
+    "dotenv": "^16.4.5"
   }
 }

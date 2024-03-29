@@ -1,13 +1,30 @@
-# Sample Hardhat Project
+# Minifundraiser
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This is a Crowdfunding Application built for the Minipay ecosystem
 
-Try running some of the following tasks:
+---
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
-```
+#### By [Anthony Kimani](https://github.com/anthonykimani)
+
+---
+
+#### Table of contents
+
+- [Description](#description)
+- [Report](#report)
+- [Requirements](#requirements)
+- [Testing](#testing)
+
+---
+
+### Description
+
+`Fundraiser.sol` is a Fundraising smart contract where users can raise crypto for crowdfunding activities.
+
+Here is the [Smart Contract](https://sepolia.etherscan.io/address/0xc7f15c6d31a993496c23888559d31acbd159c8b0) Deployed on Sepolia EtherScan
+
+1. User can Create Fundraising Campaign with name, targetAmount, campaignAddress, campaignDeadline.
+2. Users can send eth to a Campaign
+3. 
+
+---
