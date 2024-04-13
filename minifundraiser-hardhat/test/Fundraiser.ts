@@ -65,9 +65,8 @@ describe("Minifundraiser on Minipay", async () => {
       );
     });
     it("Users can send Eth to a campaign", async () => {
-      const { fundraiser, deployer, account1, account2, publicClient } = await loadFixture(
-        fixture
-      );
+      const { fundraiser, deployer, account1, account2, publicClient } =
+        await loadFixture(fixture);
       const Water4LifeTx = await fundraiser.write.createCampaign([
         toHex("Water4Life Borehole Project", { size: 32 }),
         parseEther("420"),
