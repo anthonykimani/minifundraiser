@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from "./ui/dialog";
 import { useForm } from "react-hook-form";
-import { useAccount, useWriteContract } from "wagmi";
+import { useAccount, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import * as campaignAbi from "../../abi/campaign.json";
 import { parseEther, toHex } from "viem";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
@@ -29,26 +29,35 @@ const CreateCampaign = () => {
     formState: { errors: errorsCampaignModal },
     control: controlCampaignModal,
   } = useForm();
-  const { writeContract } = useWriteContract();
+  const { status, data: hash, writeContract, isPending, error } = useWriteContract();
   const { address } = useAccount();
 
-  const onSubmitCampaignModal = async (data: any) => {
+  const onSubmitCampaignModal = async (dataparam: any) => {
     // onsumbit CampaignModal logic
 
     const dateTimeStamp = Math.floor(date!.getTime() / 1000); // converst Date() to unix timestamp
 
-    writeContract({
+    const createCampaign = writeContract({
       abi: campaignAbi,
       address: "0xc7F15C6d31a993496C23888559D31ACBD159c8B0",
       functionName: "createCampaign",
       args: [
-        toHex(data.campaignName, { size: 32 }),
-        parseEther(`${data.amount}`),
+        toHex(dataparam.campaignName, { size: 32 }),
+        parseEther(`${dataparam.amount}`),
         address,
         dateTimeStamp,
       ],
     });
+
+    console.log(createCampaign, status, hash, error);
+
   };
+
+  const { isLoading: isConfirming, isSuccess: isConfirmed } = 
+  useWaitForTransactionReceipt({ 
+    hash, 
+  }) 
+
   return (
     <div className="mx-2">
       <Dialog open={openCampaignModal} onOpenChange={setOpenCampaignModal}>
@@ -125,10 +134,11 @@ const CreateCampaign = () => {
                   </Popover>
                 </div>
                 <button
+                  disabled={isPending}
                   type="submit"
                   className="bg-[#E99123] text-white font-semibold rounded-full p-3"
                 >
-                  Submit
+                  {isPending ? 'Confirming...' : 'Create Campaign'} 
                 </button>
               </form>
             </DialogDescription>
