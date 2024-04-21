@@ -1,4 +1,4 @@
-[
+export const campaignABI = [
   {
     "inputs": [
       {
@@ -10,9 +10,9 @@
     "name": "campaigns",
     "outputs": [
       {
-        "internalType": "address payable",
-        "name": "creator",
-        "type": "address"
+        "internalType": "bytes32",
+        "name": "campaignName",
+        "type": "bytes32"
       },
       {
         "internalType": "uint256",
@@ -20,18 +20,23 @@
         "type": "uint256"
       },
       {
-        "internalType": "uint256",
-        "name": "deadline",
-        "type": "uint256"
+        "internalType": "address payable",
+        "name": "campaignAddress",
+        "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "numFunders",
+        "name": "campaignDeadline",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
         "name": "amountRaised",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "numFunders",
         "type": "uint256"
       }
     ],
@@ -41,13 +46,23 @@
   {
     "inputs": [
       {
+        "internalType": "bytes32",
+        "name": "_campaignName",
+        "type": "bytes32"
+      },
+      {
         "internalType": "uint256",
         "name": "_targetAmount",
         "type": "uint256"
       },
       {
+        "internalType": "address",
+        "name": "_campaignAddress",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
-        "name": "_deadline",
+        "name": "_campaignDeadline",
         "type": "uint256"
       }
     ],
@@ -69,4 +84,4 @@
     "stateMutability": "payable",
     "type": "function"
   }
-]
+] as const
