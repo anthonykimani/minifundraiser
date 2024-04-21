@@ -6,8 +6,6 @@ import Categories from "./components/Categories";
 import VerifiedCampaigns from "@/shared/VerifiedCampaigns";
 import NavBar from "@/shared/NavBar";
 import CreateCampaign from "@/shared/CreateCampaign";
-import { ethers } from "ethers";
-import ABI from "../../../abi/campaign";
 
 const Home = () => {
   // // Ensure MiniPay provider is available
