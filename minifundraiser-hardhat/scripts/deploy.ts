@@ -3,8 +3,13 @@ import {
   abi,
   bytecode,
 } from "../artifacts/contracts/Fundraiser.sol/Fundraiser.json";
+import { privateKeyToAccount } from "viem/accounts";
+import * as dotenv from "dotenv";
+dotenv.config();
 
-require("dotenv").config();
+// imports Alchemy API key and metamask private key
+const { CELO_PRIVATE_KEY } = process.env;
+
 const hre = require("hardhat");
 
 async function main() {

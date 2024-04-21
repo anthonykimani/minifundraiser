@@ -21,7 +21,7 @@ This is a Crowdfunding Application built for the Minipay ecosystem
 
 `Fundraiser.sol` is a Fundraising smart contract where users can raise crypto for crowdfunding activities.
 
-Here is the [Smart Contract](https://sepolia.etherscan.io/address/0xc7f15c6d31a993496c23888559d31acbd159c8b0) Deployed on Sepolia EtherScan
+Here is the [Smart Contract](https://sepolia.etherscan.io/address/0x30d2eee1bc79506ca43073d5c8e06504a28e7caf) Deployed on Sepolia EtherScan
 
 1. User can Create Fundraising Campaign with name, targetAmount, campaignAddress, campaignDeadline.
 2. Users can send eth to a Campaign
