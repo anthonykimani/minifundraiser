@@ -24,7 +24,7 @@ import { format } from "date-fns";
 import { Calendar } from "./ui/calendar";
 import { contract } from "@/constants/contract";
 import { config } from "@/config";
-import { sepolia } from "viem/chains";
+import { sepolia, liskSepolia } from "viem/chains";
 import { injected } from '@wagmi/connectors'
 
 
@@ -56,13 +56,13 @@ const CreateCampaign = () => {
   const onSubmitCampaignModal = async (dataparam: any) => {
     // onsumbit CampaignModal logic
     if(!address) {
-      await connectAsync({ chainId: sepolia.id, connector: injected()})
+      await connectAsync({ chainId: liskSepolia.id, connector: injected()})
     }
 
     const dateTimeStamp = Math.floor(date!.getTime() / 1000); // converst Date() to unix timestamp
-
+    console.log(dataparam);
+    
     const createCampaign = await writeContractAsync({
-      chainId:sepolia.id,
       abi: campaignABI,
       address: contract.address,
       functionName: "createCampaign",
@@ -79,8 +79,12 @@ const CreateCampaign = () => {
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
+      chainId: liskSepolia.id,
       hash,
     });
+
+    console.log({ isLoading: isConfirming, isSuccess: isConfirmed });
+    
 
   return (
     <div className="mx-2">

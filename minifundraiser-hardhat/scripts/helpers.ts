@@ -12,19 +12,25 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 // imports Alchemy API key and metamask private key
-const { METAMASK_PRIVATE_KEY, ALCHEMY_API_KEY } = process.env;
+const { METAMASK_PRIVATE_KEY, ALCHEMY_API_KEY, INFURA_API_KEY, CELO_PRIVATE_KEY } =
+  process.env;
 
 export function createClients() {
-  const httpTransport = http(
+  // Transport for eth-sepolia network
+  const sepoliaHttpTransport = http(
     `https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY ?? ""}`
   );
 
-  const publicClient = createPublicClient({
-    chain: chains.sepolia,
-    transport: httpTransport,
-  });
+  // Transport for celo alfajores network
+  const celoAlfajoresHttpTransport = http(
+    `https://celo-alfajores.infura.io/v3/${INFURA_API_KEY ?? ""}`
+  );
 
-  const getPublicClient = hre.viem.getPublicClient();
+  // Creates a publicClient
+  const publicClient = createPublicClient({
+    chain: chains.liskSepolia,
+    transport: sepoliaHttpTransport,
+  });
 
   // Creates an Account from a private key.
   const account = privateKeyToAccount(`0x${METAMASK_PRIVATE_KEY ?? ""}`);
@@ -32,8 +38,8 @@ export function createClients() {
   // create a walletClient
   const deployer = createWalletClient({
     account: account,
-    chain: chains.sepolia,
-    transport: httpTransport,
+    chain: chains.liskSepolia,
+    transport: sepoliaHttpTransport,
   });
 
   return { publicClient, deployer };

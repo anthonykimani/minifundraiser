@@ -2,13 +2,14 @@
 
 import React, { useState } from "react";
 import { BigNumber } from "bignumber.js";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useWeb3Modal, useWeb3ModalState } from "@web3modal/wagmi/react";
 import { useAccount, useDisconnect } from "wagmi";
 import truncateEthAddress from "truncate-eth-address";
 import { List, XCircle } from "lucide-react";
 
 const AppBar = () => {
   const { open, close } = useWeb3Modal();
+  const { selectedNetworkId } = useWeb3ModalState();
   const { address, isConnecting, isDisconnected } = useAccount();
   const { disconnect } = useDisconnect();
   const [showMenu, setShowMenu] = useState(false);
@@ -42,7 +43,7 @@ const AppBar = () => {
               ? "Connect Wallet"
               : isConnecting
               ? "Connecting"
-              : `Connected to ${truncateEthAddress(address??"")}`}
+              : `Connected to ${truncateEthAddress(address??"")}` }
           </button>
         </ul>
       </div>

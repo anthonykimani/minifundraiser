@@ -3,8 +3,21 @@ import { categoryData } from "@/helpers/categoryData";
 import Category from "@/shared/Category";
 import VerticalCampaignCard from "@/shared/VerticalCampaignCard";
 import React from "react";
+import { useReadContract } from 'wagmi'
+import { campaignABI } from "../../../../abi/campaign";
+import { contract } from "@/constants/contract";
 
 const Categories = () => {
+  const { data } = useReadContract({
+    abi: campaignABI,
+    address: contract.address,
+    functionName: 'campaigns',
+    args: [BigInt(1)]
+  })
+
+  console.log("data", data);
+  
+
   return (
     <div className="mx-2 mt-[50px]">
       <div className="flex justify-between my-2 items-center">
