@@ -28,7 +28,7 @@ export function createClients() {
 
   // Creates a publicClient
   const publicClient = createPublicClient({
-    chain: chains.liskSepolia,
+    chain: chains.celoAlfajores,
     transport: sepoliaHttpTransport,
   });
 

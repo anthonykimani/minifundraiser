@@ -60,21 +60,29 @@ const CreateCampaign = () => {
     }
 
     const dateTimeStamp = Math.floor(date!.getTime() / 1000); // converst Date() to unix timestamp
-    console.log(dataparam);
+    console.log(dateTimeStamp);
     
-    const createCampaign = await writeContractAsync({
-      abi: campaignABI,
-      address: contract.address,
-      functionName: "createCampaign",
-      args: [
-        toHex(dataparam.campaignName, { size: 32 }),
-        parseEther(`${dataparam.amount}`),
-        address as `0x${string}`,
-        BigInt(dateTimeStamp),
-      ],
-    });
+    // const createCampaign = await writeContractAsync({
+    //   abi: campaignABI,
+    //   address: contract.address,
+    //   functionName: "createCampaign",
+    //   args: [
+    //     toHex(dataparam.campaignName, { size: 32 }),
+    //     parseEther(`${dataparam.amount}`),
+    //     address as `0x${string}`,
+    //     BigInt(dateTimeStamp),
+    //   ],
+    // });
+    
+    console.log(
+      toHex(dataparam.campaignName, { size: 32 }),
+      parseEther(`${dataparam.amount}`),
+      address as `0x${string}`,
+      dateTimeStamp,
+    )
 
-    console.log(createCampaign, status, hash, error);
+    // console.log(createCampaign, status, hash, error);
+
   };
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =

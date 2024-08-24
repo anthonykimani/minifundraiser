@@ -8,14 +8,13 @@ import { campaignABI } from "../../../../abi/campaign";
 import { contract } from "@/constants/contract";
 
 const Categories = () => {
-  const { data } = useReadContract({
+  const { data, isError, isLoading } = useReadContract({
     abi: campaignABI,
     address: contract.address,
-    functionName: 'campaigns',
-    args: [BigInt(1)]
+    functionName: 'campaigns'
   })
 
-  console.log("data", data);
+  console.log("data", data, isError, isLoading);
   
 
   return (
